@@ -1,0 +1,27 @@
+{
+  "name": "CodeWorkrAuthentication",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "keywords": [],
+  "author": "CodeWorkr",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.3",
+    "body-parser": "^1.17.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.15.2",
+    "joi": "^14.3.1",
+    "mongoose": "^5.4.2",
+    "morgan": "^1.8.1",
+    "node-gyp": "^3.8.0",
+    "nodemon": "^1.18.9"
+  }
+}
