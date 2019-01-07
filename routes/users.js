@@ -29,13 +29,23 @@ router.route('/register')
       const user = await User.findOne({ 'email': result.value.email });
 
       if (user) {
-        res.flash('error', 'Email is already in use.');
+        req.flash('error', 'Email is already in use.');
         res.redirect('/users/register')
         return;
       }
 
       // Hash the password
-      
+      const hash = await User.hashPassword(result.value.password);
+
+      //Save user to DB
+      delete result.value.confirmationPassword;
+      result.value.password = hash;
+
+      const newUser = await new User(result.value)
+      await newUser.save();
+
+      req.flash('success', "You may now login");
+      res.redirect('/users/login');
     
     } catch(error){
 
