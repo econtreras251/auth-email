@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Joi = require('joi');
+const passport = require('passport');
 const User = require('../models/User');
 
 const userSchema = Joi.object().keys({
@@ -58,6 +59,11 @@ router.route('/register')
 router.route('/login')
   .get((req, res) => {
     res.render('login');
-  });
+  })
+  .post(passport.authenticate('local', {
+    successRedirect: '/users/dashboard',
+    failureRedirect: '/users/login',
+    failureFlash: true
+  }))
 
 module.exports = router;
